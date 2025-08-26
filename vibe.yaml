@@ -3,12 +3,13 @@ id: app-idea-generator
 name: App Idea Generator
 type: spa
 build:
+  use_docker: true
+  docker_image: node:20-alpine
   install: npm ci
   command: npm run build
   output_dir: build
-  # Your app should read this to set the correct base URL for assets/routes
-  # e.g., Webpack publicPath or an injected <base href=...>
-  base_path_env: VIBE_BASEPATH
+
+  base_path_env: PUBLIC_URL
 
   # Build-time environment variables:
   # - "env": names you may export in the shell (picked up from process env)
