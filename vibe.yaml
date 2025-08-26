@@ -1,0 +1,20 @@
+version: 1
+id: app-idea-generator
+name: App Idea Generator
+type: spa
+build:
+  install: npm ci
+  command: npm run build
+  output_dir: build
+  # Your app should read this to set the correct base URL for assets/routes
+  # e.g., Webpack publicPath or an injected <base href=...>
+  base_path_env: VIBE_BASEPATH
+
+  # Build-time environment variables:
+  # - "env": names you may export in the shell (picked up from process env)
+  # - "env_file": server-side file with KEY=VALUE lines (never committed)
+  env: [REACT_APP_OPENAI_API_KEY]         # example: used by your code at build time
+  env_file: /srv/vibes/secrets/app-idea-generator.env
+meta:
+  description: Generate app ideas for your next project.
+  tags: [react, static]
