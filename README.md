@@ -1,10 +1,10 @@
 # App Idea Generator
 
-A modern web application that generates creative app ideas using OpenAI's GPT API. Simply press a button to get three unique app ideas across different categories.
+A modern web application that generates creative app ideas using a backend API. Simply press a button to get three unique app ideas across different categories.
 
 ## Features
 
-- **AI-Powered Generation**: Uses OpenAI's GPT-3.5-turbo to generate creative app ideas
+- **API-Powered Generation**: Uses a FastAPI backend to generate creative app ideas
 - **Random Category Selection**: Automatically selects 3 random categories from 20 predefined options
 - **Beautiful UI**: Modern, responsive design with smooth animations
 - **Real-time Generation**: Watch as ideas are generated with a loading spinner
@@ -37,9 +37,8 @@ The app includes 20 predefined categories:
 ## How It Works
 
 1. **Category Selection**: The app randomly selects 3 categories from the predefined list
-2. **AI Generation**: For each category, it calls the OpenAI API to generate 5 app ideas
-3. **Random Selection**: From each set of 5 ideas, one is randomly selected
-4. **Display**: The 3 final ideas are displayed in beautiful cards side-by-side
+2. **API Generation**: For each category, it calls the backend API to generate a single app idea
+3. **Display**: The 3 generated ideas are displayed in beautiful cards side-by-side
 
 ## Setup
 
@@ -47,7 +46,7 @@ The app includes 20 predefined categories:
 
 - Node.js (version 14 or higher)
 - npm or yarn
-- OpenAI API key
+- Backend API server running
 
 ### Installation
 
@@ -64,10 +63,10 @@ cd app-idea-generator
 npm install
 ```
 
-3. Create a `.env` file in the root directory and add your OpenAI API key:
+3. Create a `.env` file in the root directory and add your API URL:
 
 ```bash
-REACT_APP_OPENAI_API_KEY=your_openai_api_key_here
+REACT_APP_API_URL=http://localhost:5000
 ```
 
 4. Start the development server:
@@ -78,13 +77,9 @@ npm start
 
 The app will open in your browser at `http://localhost:3000`.
 
-### Getting an OpenAI API Key
+### Backend API Setup
 
-1. Go to [OpenAI's website](https://openai.com/)
-2. Sign up or log in to your account
-3. Navigate to the API section
-4. Create a new API key
-5. Copy the key and add it to your `.env` file
+This app requires the App Idea Generator API to be running. Please refer to the backend API documentation for setup instructions.
 
 ## Usage
 
@@ -97,7 +92,7 @@ The app will open in your browser at `http://localhost:3000`.
 ## Technologies Used
 
 - **React**: Frontend framework
-- **OpenAI API**: AI-powered idea generation
+- **FastAPI Backend**: API-powered idea generation
 - **CSS3**: Modern styling with gradients and animations
 - **Create React App**: Development environment
 
@@ -128,9 +123,9 @@ const CATEGORIES = [
 ];
 ```
 
-### Modifying the AI Prompt
+### Modifying the API Integration
 
-To change how the AI generates ideas, modify the `prompt` variable in the `generateIdeas` function in `src/App.js`.
+To change how the app interacts with the backend API, modify the `generateIdeas` function in `src/App.js`.
 
 ### Styling
 
@@ -138,16 +133,17 @@ The app uses CSS classes for styling. You can customize the appearance by modify
 
 ## Troubleshooting
 
-### API Key Issues
+### API Connection Issues
 
 - Make sure your `.env` file is in the root directory
-- Ensure the environment variable is named `REACT_APP_OPENAI_API_KEY`
-- Restart the development server after adding the API key
+- Ensure the environment variable is named `REACT_APP_API_URL`
+- Verify that the backend API server is running
+- Restart the development server after adding the API URL
 
 ### Network Issues
 
 - Check your internet connection
-- Verify that your OpenAI API key is valid and has sufficient credits
+- Verify that the backend API is accessible at the configured URL
 - Check the browser console for any error messages
 
 ## License
